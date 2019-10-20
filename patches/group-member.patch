@@ -1,0 +1,13 @@
+diff --git a/file.c b/file.c
+index e392cd7b35..e1d79874a2 100644
+--- a/file.c
++++ b/file.c
+@@ -816,7 +816,7 @@ rb_file_lstat(obj)
+ }
+ 
+ static int
+-group_member(gid)
++group_member_polyfill(gid) /* HAVE_GROUP_MEMBER */
+     GETGROUPS_T gid;
+ {
+ #ifndef _WIN32

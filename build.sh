@@ -24,7 +24,7 @@ if [[ v1_8_z < $target_ruby_version && $target_ruby_version < v2_1_0 ]]; then
     patch -p1 < ../patches/pure-parser.patch
   fi
 fi
-if [[ $target_ruby_version < v2_0_0 ]]; then
+if [[ v1_8_z < $target_ruby_version && $target_ruby_version < v2_0_0 ]]; then
   if ! grep 'extern int yydebug' tool/ytab.sed >/dev/null; then
     if grep 'yymsg' tool/ytab.sed >/dev/null; then
       patch -p1 < ../patches/extern-int-yydebug.patch
@@ -48,9 +48,14 @@ if [[ $target_ruby_version < v1_9_1 ]]; then
     patch -p1 < ../patches/num-in-single.patch
   fi
 fi
-if [[ $target_ruby_version < v1_9_1 ]]; then
+if [[ v1_8_z < $target_ruby_version && $target_ruby_version < v1_9_1 ]]; then
   if ! grep '#include "parse\.h"' parse.y >/dev/null; then
     patch -p1 < ../patches/parse-h.patch
+  fi
+fi
+if [[ $target_ruby_version < v1_8_7 ]]; then
+  if ! grep 'HAVE_GROUP_MEMBER' file.c >/dev/null; then
+    patch -p1 < ../patches/group-member.patch
   fi
 fi
 
