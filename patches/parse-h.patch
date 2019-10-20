@@ -1,0 +1,26 @@
+diff --git a/common.mk b/common.mk
+index 3c80cdb11e..4c134d0070 100644
+--- a/common.mk
++++ b/common.mk
+@@ -371,7 +371,8 @@ PHONY:
+ {$(VPATH)}parse.c: {$(VPATH)}parse.y $(srcdir)/tool/ytab.sed
+ 
+ {$(srcdir)}.y.c:
+-	$(YACC) $(YFLAGS) -o y.tab.c $<
++	$(YACC) -d $(YFLAGS) -o y.tab.c $<
++	@$(MV) y.tab.h $(@:.c=.h)
+ 	sed -f $(srcdir)/tool/ytab.sed -e "/^#/s!y\.tab\.c!$@!" y.tab.c > $@.new
+ 	@$(RM) $@ y.tab.c
+ 	@$(MV) $@.new $@
+diff --git a/parse.y b/parse.y
+index 9e0c8b18e2..664b43e22e 100644
+--- a/parse.y
++++ b/parse.y
+@@ -21,6 +21,7 @@
+ #include "ruby/node.h"
+ #include "ruby/st.h"
+ #include "ruby/encoding.h"
++#include "parse.h"
+ #include "id.h"
+ #include "regenc.h"
+ #include <stdio.h>

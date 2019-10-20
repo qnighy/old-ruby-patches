@@ -1,0 +1,13 @@
+diff --git a/tool/instruction.rb b/tool/instruction.rb
+index fd8c0f06f2..7c954db597 100644
+--- a/tool/instruction.rb
++++ b/tool/instruction.rb
+@@ -4,7 +4,7 @@
+ 
+ require 'erb'
+ 
+-module RubyVM
++class RubyVM
+   class Instruction
+     def initialize name, opes, pops, rets, comm, body, tvars, sp_inc,
+                    orig = self, defopes = [], type = nil,

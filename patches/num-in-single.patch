@@ -1,0 +1,13 @@
+diff --git a/parse.y b/parse.y
+index 9e0c8b18e2..9049ee3527 100644
+--- a/parse.y
++++ b/parse.y
+@@ -2806,7 +2806,7 @@ primary		: literal
+ 			in_single = 0;
+ 			local_push(0);
+ 		    /*%
+-			$$ = in_single;
++			$<num>$ = in_single;
+ 			in_single = 0;
+ 		    %*/
+ 		    }

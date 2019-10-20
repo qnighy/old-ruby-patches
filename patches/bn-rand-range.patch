@@ -1,0 +1,20 @@
+diff --git a/ext/openssl/openssl_missing.h b/ext/openssl/openssl_missing.h
+index e8c75ca42c..172cada42a 100644
+--- a/ext/openssl/openssl_missing.h
++++ b/ext/openssl/openssl_missing.h
+@@ -116,8 +116,15 @@ int X509_CRL_add0_revoked(X509_CRL *crl, X509_REVOKED *rev);
+ int BN_mod_sqr(BIGNUM *r, const BIGNUM *a, const BIGNUM *m, BN_CTX *ctx);
+ int BN_mod_add(BIGNUM *r, const BIGNUM *a, const BIGNUM *b, const BIGNUM *m, BN_CTX *ctx);
+ int BN_mod_sub(BIGNUM *r, const BIGNUM *a, const BIGNUM *b, const BIGNUM *m, BN_CTX *ctx);
++
++#if !defined(HAVE_BN_RAND_RANGE)
+ int BN_rand_range(BIGNUM *r, BIGNUM *range);
++#endif
++
++#if !defined(HAVE_BN_PSEUDO_RAND_RANGE)
+ int BN_pseudo_rand_range(BIGNUM *r, BIGNUM *range);
++#endif
++
+ char *CONF_get1_default_config_file(void);
+ int PEM_def_callback(char *buf, int num, int w, void *key);
+ 

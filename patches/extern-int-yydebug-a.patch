@@ -1,0 +1,17 @@
+diff --git a/tool/ytab.sed b/tool/ytab.sed
+index 92f8218202..8bf7d2bb3a 100755
+--- a/tool/ytab.sed
++++ b/tool/ytab.sed
+@@ -5,6 +5,12 @@ i\
+ a\
+ #endif
+ }
++/^extern int yydebug;/{
++i\
++#ifndef yydebug
++a\
++#endif
++}
+ /^yydestruct/,/#endif/{
+   /^yydestruct/{
+     /parser/!{
