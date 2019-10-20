@@ -16,6 +16,6 @@ fi
 
 cd "openssl-$OPENSSL_VERSION"
 ./config --prefix="$OPENSSL0_9_DIR" --shared
-make -j4
+make
 # make test
 make install_sw
