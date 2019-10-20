@@ -15,7 +15,7 @@ if [[ ! -e "openssl-$OPENSSL_VERSION" ]]; then
 fi
 
 cd "openssl-$OPENSSL_VERSION"
-./config --prefix="$OPENSSL1_0_DIR" --shared
+./config --prefix="$OPENSSL1_0_DIR" -DPIC -fPIC
 make -j4
 # make test
 make install_sw
